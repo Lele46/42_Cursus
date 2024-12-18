@@ -1,0 +1,15 @@
+SRC = WrongAnimal.cpp Animal.cpp WrongCat.cpp Cat.cpp Dog.cpp main.cpp
+NAME = AnimalSounds
+CC = c++ -Wall -Wextra -Werror -std=c++98
+
+all: $(NAME)
+
+$(NAME): $(SRC)
+	$(CC) $(SRC) -o $(NAME)
+
+clean:
+	rm -rf $(NAME)
+
+fclean: clean
+
+re: fclean all
