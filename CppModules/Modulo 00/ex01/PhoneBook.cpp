@@ -34,7 +34,7 @@ void PhoneBook::add_contact()
         return ;
     }
     std::string tmp;
-    Contact *contact = new Contact();
+    Contact contact;
     std::cout << "Enter first name: ";
     std::getline(std::cin, tmp);
     if (std::cin.eof()) 
@@ -48,7 +48,7 @@ void PhoneBook::add_contact()
         std::cin.clear();
         return ;
     }
-    contact->set_first_name(tmp);
+    contact.set_first_name(tmp);
     std::cout << "Enter last name: ";
     std::getline(std::cin, tmp);
     if (std::cin.eof())
@@ -62,7 +62,7 @@ void PhoneBook::add_contact()
         std::cin.clear();
         return ;
     }
-    contact->set_last_name(tmp);
+    contact.set_last_name(tmp);
     std::cout << "Enter nickname: ";
     std::getline(std::cin, tmp);
     if (std::cin.eof())
@@ -76,7 +76,7 @@ void PhoneBook::add_contact()
         std::cin.clear();
         return ;
     }
-    contact->set_nickname(tmp);
+    contact.set_nickname(tmp);
     std::cout << "Enter phone number: ";
     std::getline(std::cin, tmp);
     if (std::cin.eof())
@@ -90,7 +90,7 @@ void PhoneBook::add_contact()
         std::cin.clear();
         return ;
     }
-    contact->set_phone_number(tmp);
+    contact.set_phone_number(tmp);
     std::cout << "Enter darkest secret: ";
     std::getline(std::cin, tmp);
     if (std::cin.eof())
@@ -104,10 +104,10 @@ void PhoneBook::add_contact()
         std::cin.clear();
         return ;
     }
-    contact->set_darkest_secret(tmp);
+    contact.set_darkest_secret(tmp);
     if (this->contacts.size() == 8)
         this->contacts.erase(this->contacts.begin());
-    this->contacts.push_back(*contact);
+    this->contacts.push_back(contact);
 }
 
 void PhoneBook::search_contact()
@@ -139,7 +139,11 @@ void PhoneBook::search_contact()
         return ;
     }
     if (std::cin.fail() || std::cin.peek() != '\n')
+    {
         std::cout << "Invalid index" << std::endl;
+        std::cin.clear();
+        std::cin.ignore(10000, '\n');
+    }
     else
     { 
         if (i < (unsigned int)this->contacts.size())

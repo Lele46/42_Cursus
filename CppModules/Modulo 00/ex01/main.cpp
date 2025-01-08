@@ -16,7 +16,7 @@
 int main()
 {
     std::string command;
-    PhoneBook *phonebook = new PhoneBook();
+    PhoneBook phonebook;
     while (1)
     {
         std::cout << "Enter ADD, SEARCH or EXIT: ";
@@ -27,9 +27,9 @@ int main()
             break ;
         }
         if (command == "ADD")
-            phonebook->add_contact();
+            phonebook.add_contact();
         else if (command == "SEARCH")
-            phonebook->search_contact();
+            phonebook.search_contact();
         else if (command == "EXIT")
             return (0);
         if (std::cin.eof())

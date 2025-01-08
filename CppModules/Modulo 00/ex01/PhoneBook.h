@@ -13,6 +13,7 @@
 #pragma once
 #include "Contact.h"
 #include <iostream>
+#include <cstdlib>
 #include <vector>
 #include <string>
 #include <iomanip>
